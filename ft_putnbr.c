@@ -6,12 +6,13 @@
 /*   By: ccheng-c <ccheng-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 00:13:44 by ccheng-c          #+#    #+#             */
-/*   Updated: 2023/06/14 01:50:22 by ccheng-c         ###   ########.fr       */
+/*   Updated: 2023/06/14 17:30:06 by ccheng-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
+
 
 char	*ft_uitoa(unsigned int n)
 {
@@ -57,18 +58,30 @@ void	ft_putunumber(unsigned int n, int *len)
 	free(nbr);
 }
 
-void	ft_puthex(unsigned int num, const char format)
+void	ft_puthex(unsigned int num, const char format, int *len)
 {
 	char	*hex;
-	int		len;
 
-	len = 0;
 	if (format == 'x')
 		hex = "0123456789abcdef";
 	else
 		hex = "0123456789ABCDEF";
 	if (num >= 16)
-		ft_puthex(num / 16, format);
-	ft_putchar(hex[num % 16], &len);
+		ft_puthex(num / 16, format, len);
+	ft_putchar(hex[num % 16], len);
 }
 
+void	ft_putpointer(uintptr_t ptr, int *len)
+{
+	char	*base;
+
+	base = "0123456789abcdef";
+	if (ptr >= 16)
+		ft_putpointer(ptr / 16, len);
+	if (ptr < 16)
+	{
+		ft_putstr_fd("0x", 1);
+		*len += 2;
+	}
+	ft_putchar(base[ptr % 16], len);
+}
