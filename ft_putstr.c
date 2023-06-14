@@ -6,7 +6,7 @@
 /*   By: ccheng-c <ccheng-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 23:43:39 by ccheng-c          #+#    #+#             */
-/*   Updated: 2023/06/14 00:15:39 by ccheng-c         ###   ########.fr       */
+/*   Updated: 2023/06/14 17:36:07 by ccheng-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	ft_putstring(char *str, int *len)
 		*len += 6;
 		return ;
 	}
-
 	while (str[i])
 	{
 		ft_putchar(str[i], len);
